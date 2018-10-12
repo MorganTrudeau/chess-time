@@ -62,7 +62,7 @@ const GameModeBar = ({ onPress, gameMode }) => (
 const styles = StyleSheet.create({
   timeSetBarContainer: {
     flexDirection: "row",
-    height: 50,
+    height: Dimensions.get("window").width*0.09,
     width: "100%",
     backgroundColor: "#808080",
     justifyContent: "center"
