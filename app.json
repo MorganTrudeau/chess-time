@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "Chess Time",
+    "description": "Last chess clock you'll ever need",
+    "slug": "chess-clock",
+    "privacy": "public",
+    "sdkVersion": "30.0.0",
+    "platforms": ["ios", "android"],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "buildNumber": "1.0",
+      "bundleIdentifier": "com.morgantrudeau.chessclock"
+    },
+    "android": {
+      "package": "com.morgantrudeau.chessclock",
+      "versionCode": 1.0,
+      "permissions": []
+    }
+  }
+}
+
