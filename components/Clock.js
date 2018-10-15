@@ -4,14 +4,15 @@ import {
   Text,
   TextInput,
   TouchableWithoutFeedback,
-  View
+  View,
+  KeyboardAvoidingView
 } from "react-native";
 import { scaleFontSize, formatTime, buildInitialTime } from "../utils";
 
 export default class Clock extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { newGame: true, time: 0, increment: "0" };
+    this.state = { newGame: true, time: 120, increment: "1" };
   }
 
   componentWillReceiveProps({
@@ -91,7 +92,11 @@ export default class Clock extends React.Component {
       newGame
     } = this.props;
     return isEditing ? (
-      <View style={{ flex: 1, width: "100%", backgroundColor: color }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1, width: "100%", backgroundColor: color, justifyContent: "center", alignItems: "center" }}
+        enabled={true}
+        behavior={"padding"}
+      >
         <View style={styles.timeInputsContainer}>
           <TextInput
             style={[styles.timeInput, { color: textColor }]}
@@ -123,8 +128,8 @@ export default class Clock extends React.Component {
             width: "100%",
             justifyContent: "center",
             alignItems: "center",
-            marginBottom: 50,
-            marginTop: -50
+            // marginBottom: 50,
+            // marginTop: -50
           }}
         >
           <Text style={[{ color: textColor }, styles.incrementText]}>
@@ -144,13 +149,16 @@ export default class Clock extends React.Component {
             underlineColorAndroid={"transparent"}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
     ) : (
-      <TouchableWithoutFeedback onPress={onPress}>
+      <TouchableWithoutFeedback
+        onPress={this.state.time !== 0 ? onPress : null}
+      >
         <View
           style={[
             styles.clockContainer,
             { backgroundColor: isActive || newGame ? color : "#b3b3b3" },
+            this.state.time === 0 ? { backgroundColor: "#ff0000" } : {},
             rotated ? { transform: [{ rotate: "180deg" }] } : {}
           ]}
         >
@@ -175,7 +183,7 @@ export default class Clock extends React.Component {
 
 const styles = StyleSheet.create({
   timeInputsContainer: {
-    flex: 1,
+    // flex: 1,
     flexDirection: "row",
     width: "100%",
     justifyContent: "center",

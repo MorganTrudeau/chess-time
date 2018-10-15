@@ -9,9 +9,9 @@ export default class App extends React.Component {
     this.state = {
       isWhiteClockActive: false,
       isBlackClockActive: false,
-      initialWhiteTime: 0,
-      initialBlackTime: 0,
-      type: null,
+      initialWhiteTime: 120,
+      initialBlackTime: 120,
+      gameMode: "2|1",
       isEditing: false,
       newGame: true
     };
