@@ -116,7 +116,6 @@ export default class App extends React.Component {
           newGame={newGame}
           rotated={true}
         />
-
         <GameModeBar onPress={this.setGameMode} gameMode={gameMode} />
         <Clock
           initialTime={this.state.initialBlackTime}

@@ -33,7 +33,7 @@ export default class Clock extends React.Component {
           }
         }, 1000);
         if (!this.state.newGame) {
-          this.setState({ time: time + increment });
+          this.setState({ time: time + parseInt(increment) });
         } else {
           this.setState({ newGame: false });
         }
@@ -93,7 +93,13 @@ export default class Clock extends React.Component {
     } = this.props;
     return isEditing ? (
       <KeyboardAvoidingView
-        style={{ flex: 1, width: "100%", backgroundColor: color, justifyContent: "center", alignItems: "center" }}
+        style={{
+          flex: 1,
+          width: "100%",
+          backgroundColor: color,
+          justifyContent: "center",
+          alignItems: "center"
+        }}
         enabled={true}
         behavior={"padding"}
       >
@@ -127,7 +133,7 @@ export default class Clock extends React.Component {
             flexDirection: "row",
             width: "100%",
             justifyContent: "center",
-            alignItems: "center",
+            alignItems: "center"
             // marginBottom: 50,
             // marginTop: -50
           }}
@@ -158,11 +164,16 @@ export default class Clock extends React.Component {
           style={[
             styles.clockContainer,
             { backgroundColor: isActive || newGame ? color : "#b3b3b3" },
-            this.state.time === 0 ? { backgroundColor: "#ff0000" } : {},
-            rotated ? { transform: [{ rotate: "180deg" }] } : {}
+            this.state.time === 0 ? { backgroundColor: "#ff0000" } : {}
           ]}
         >
-          <Text style={[styles.clockText, { color: textColor }]}>
+          <Text
+            style={[
+              styles.clockText,
+              { color: textColor },
+              rotated ? { transform: [{ rotate: "180deg" }] } : {}
+            ]}
+          >
             {formatTime(this.state.time)}
           </Text>
           {/*{!isActive && !newGame ? (*/}
