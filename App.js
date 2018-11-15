@@ -18,25 +18,19 @@ export default class App extends React.Component {
   }
 
   toggleWhiteClock = () => {
-    if (!this.state.isBlackClockActive && !this.state.isWhiteClockActive) {
-      this.setState({
-        isWhiteClockActive: true,
-        newGame: false
-      });
-    } else if (this.state.isWhiteClockActive) {
-      this.toggleClocks();
-    }
+    this.state.newGame
+      ? this.setState({
+          isBlackClockActive: true,
+          newGame: false
+        })
+      : this.toggleClocks();
   };
 
   toggleBlackClock = () => {
-    if (!this.state.isBlackClockActive && !this.state.isWhiteClockActive) {
-      this.setState({
-        isBlackClockActive: true,
-        newGame: false
-      });
-    } else if (this.state.isBlackClockActive) {
-      this.toggleClocks();
+    if (this.state.newGame) {
+      return;
     }
+    this.toggleClocks();
   };
 
   toggleClocks = () => {
